@@ -79,16 +79,16 @@ content/
 
 ### Post Front Matter
 
-```yaml
----
-title: "Hello World"
-date: 2024-01-15T09:30:00-05:00
-description: ""         # Used in meta description and post summaries
-tags: []
-draft: true
-# slug: ""              # Defaults to filename without extension
-# image: ""             # Root-relative path; overrides ogImage for this post
----
+```toml
++++
+title = 'Hello World'
+date = 2024-01-15T09:30:00-05:00
+description = ''         # Used in meta description and post summaries
+tags = []
+draft = true
+# slug = ''              # Defaults to filename without extension
+# image = ''             # Root-relative path; overrides ogImage for this post
++++
 ```
 
 Create a new post with the built-in archetype:

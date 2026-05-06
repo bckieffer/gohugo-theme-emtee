@@ -196,19 +196,16 @@ The rules are enforced by `themes/emtee/scripts/lint-slugs.sh`, which runs befor
 
 ### Post Front Matter
 
-```yaml
----
-title: "Hello World"
-date: 2024-01-15T09:30:00-05:00
-description: "A short description for SEO and post summaries."
-tags:
-  - general
-  - introduction
-draft: false
-# Optional overrides:
-# slug: "hello-world"           # defaults to filename without extension
-# image: "/images/hello-world/og.png"   # social-card override
----
+```toml
++++
+title = 'Hello World'
+date = 2024-01-15T09:30:00-05:00
+description = 'A short description for SEO and post summaries.'
+tags = ['general', 'introduction']
+draft = false
+# slug = 'hello-world'                    # defaults to filename without extension
+# image = '/images/hello-world/og.png'   # social-card override
++++
 
 Post body content starts here.
 ```
@@ -218,26 +215,28 @@ Post body content starts here.
 
 ### Disabling the `/posts/` Section Page (`content/posts/_index.md`)
 
-```yaml
----
-_build:
-  render: never
-  list: never
----
+```toml
++++
+[build]
+render = 'never'
+list = 'never'
++++
 ```
 
 ### Archetype (`themes/emtee/archetypes/default.md`)
 
 New posts created with `hugo new posts/my-post.md` use the theme's archetype:
 
-```yaml
----
-title: "{{ replace .File.ContentBaseName "-" " " | title }}"
-date: {{ .Date }}
-description: ""
-tags: []
-draft: true
----
+```toml
++++
+title = '{{ replace .File.ContentBaseName "-" " " | title }}'
+date = '{{ .Date }}'
+description = ''
+tags = []
+draft = true
+# slug = ''
+# image = ''
++++
 ```
 
 To override the archetype for a specific site, place `archetypes/default.md` in the site root. Hugo's lookup order gives the site-level file priority.
@@ -719,19 +718,9 @@ Allow: /
 Sitemap: {{ "sitemap.xml" | absURL }}
 ```
 
-### RSS Template Override (`themes/emtee/layouts/_default/rss.xml`)
+### RSS
 
-Overrides Hugo's built-in RSS template to emit summaries instead of full post bodies:
-
-```xml
-<item>
-  <title>{{ .Title }}</title>
-  <link>{{ .Permalink }}</link>
-  <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-  <guid>{{ .Permalink }}</guid>
-  <description>{{ .Summary | html }}</description>
-</item>
-```
+Hugo's built-in RSS output is used as-is. Feed item content is full post bodies (Hugo default). The item cap is controlled by `[services.rss] limit = 20` in `hugo.toml` — no custom template required.
 
 ---
 

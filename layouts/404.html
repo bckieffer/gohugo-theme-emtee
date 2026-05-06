@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section>
+  <h1>Page Not Found</h1>
+  <p>The page you requested could not be found. It may have been moved or deleted.</p>
+  <p><a href="{{ "/" | relURL }}">Return to the home page</a></p>
+  {{ $posts := first 5 (where site.RegularPages "Section" "posts") }}
+  {{ with $posts }}
+  <section class="archive">
+    <h2>Recent Posts</h2>
+    <ul>
+      {{ range . }}
+      <li>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</section>
+{{ end }}
