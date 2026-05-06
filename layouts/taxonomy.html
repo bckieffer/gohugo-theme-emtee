@@ -1,7 +1,13 @@
 {{ define "main" }}
+<section class="archive">
   <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ end }}
+  <ul class="taxonomy-list">
+    {{ range .Data.Terms.Alphabetical }}
+    <li>
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+      <span class="post-count">({{ .Count }})</span>
+    </li>
+    {{ end }}
+  </ul>
+</section>
 {{ end }}

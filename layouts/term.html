@@ -1,7 +1,29 @@
 {{ define "main" }}
+{{ $paginator := .Paginate .Pages }}
+<section class="archive">
   <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+  {{ range ($paginator.Pages.GroupByDate "January 2006") }}
+  <section class="archive-month">
+    <h2>{{ .Key }}</h2>
+    <ul>
+      {{ range .Pages }}
+      <li>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
   {{ end }}
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination" aria-label="Pagination">
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" rel="prev">Newer</a>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" rel="next">Older</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</section>
 {{ end }}
