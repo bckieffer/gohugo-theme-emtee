@@ -1,0 +1,45 @@
+@import "components/header.css";
+@import "components/footer.css";
+@import "components/layout.css";
+
+body {
+  color: #222;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: #00e;
+  text-decoration: none;
+}
+
+/* Skip link — off-screen until focused */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  color: #00e;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skip-link {
+    transition: top 0.1s;
+  }
+}
+
+/* Focus indicator — visible for keyboard, suppressed for pointer */
+:focus-visible {
+  outline: 2px solid #00e;
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

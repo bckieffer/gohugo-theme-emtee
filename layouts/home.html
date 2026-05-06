@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ $paginator := .Paginate (where site.RegularPages "Section" "posts") }}
+  <section class="post-list">
+    <h1>Recent Posts</h1>
+    {{ range $paginator.Pages }}
+      {{ partial "post-summary.html" . }}
+    {{ end }}
+  </section>
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination" aria-label="Pagination">
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" rel="prev">Newer posts</a>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" rel="next">Older posts</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+{{ end }}

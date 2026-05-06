@@ -1,0 +1,20 @@
+<aside>
+  <section>
+    <h3>Recent Posts</h3>
+    <ul>
+      {{ range first 5 site.RegularPages }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ with site.Taxonomies.tags }}
+  <section>
+    <h3>Tags</h3>
+    <ul>
+      {{ range $name, $pages := . }}
+        <li><a href="{{ (site.GetPage (printf "/tags/%s" $name)).RelPermalink }}">{{ $name }}</a></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</aside>

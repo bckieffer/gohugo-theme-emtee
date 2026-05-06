@@ -1,0 +1,7 @@
+name = "Hugo Emtee"
+license = "MIT"
+author = "Brian Kieffer"
+description = "A vintage-inspired personal blog theme."
+homepage = "https://github.com/bckieffer/hugo-emtee"
+tags = ["blog", "minimal", "responsive"]
+features = ["i18n"]

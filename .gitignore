@@ -1,0 +1,15 @@
+# Hugo's default output directory
+public/
+resources/
+
+# Local development files
+.DS_Store
+Thumbs.db
+hugo_stats.json
+
+# If you use Node/Tailwind/PostCSS
+node_modules/
+.npm/
+
+# Local environment overrides
+.env
