@@ -1,6 +1,6 @@
 # emtee
 
-A minimal Hugo theme for personal blogs. Single-author, semantic HTML, WCAG 2.1 AA accessible, no JavaScript, no build dependencies beyond Hugo itself.
+A vintage-inspire minimal Hugo theme for personal blogs. Single-author, semantic HTML, WCAG 2.1 AA accessible, no JavaScript, no build dependencies beyond Hugo itself.
 
 ---
 

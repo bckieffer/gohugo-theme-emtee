@@ -1,6 +1,6 @@
 ## Overview
 
-This document specifies the architecture, configuration, and template structure for a Hugo-based static blog using the **emtee** theme. Posts are stored as flat Markdown files named after their slug, with publish date stored in front matter. The home page displays the 20 most recent posts; older content is navigable via clean date-based archive URLs at `/YYYY/MM`, and individual posts resolve to `/YYYY/MM/DD/post-slug`.
+This document specifies the configuration and template structure for a Hugo-based static blog using the **emtee** theme. Posts are stored as flat Markdown files named after their slug, with publish date stored in front matter. The home page displays the 20 most recent posts; older content is navigable via clean date-based archive URLs at `/YYYY/MM`, and individual posts resolve to `/YYYY/MM/DD/post-slug`.
 
 All build logic — layouts, partials, stylesheets, archive-stub generation, and slug linting — lives inside the `themes/emtee/` directory. The site project contains only what is irreducibly site-specific: content, site configuration, and site-level static assets.
 
