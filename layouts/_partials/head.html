@@ -19,9 +19,6 @@
 {{ end }}
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta name="twitter:description" content="{{ $desc | plainify | truncate 160 }}">
-{{ with $ogImage }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
 {{ with site.Params.twitterHandle }}<meta name="twitter:site" content="{{ . }}">{{ end }}
 
 {{ $css := resources.Get "css/main.scss" | css.Sass | resources.Minify | resources.Fingerprint }}

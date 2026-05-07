@@ -3,6 +3,7 @@
     <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
   </header>
   {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ .Summary }}{{ end }}
+  {{ if .Truncated }}<a class="read-more" href="{{ .RelPermalink }}" aria-label="Read more about {{ .Title }}">Read more</a>{{ end }}
   <div class="post-metadata">
     <a href="{{ .RelPermalink }}" aria-label="Permalink to {{ .Title }}" class="read-more">Permalink</a>
     |
