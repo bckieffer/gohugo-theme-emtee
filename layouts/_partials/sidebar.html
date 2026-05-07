@@ -14,6 +14,16 @@
         {{ end }}
       </ul>
     </section>
+    {{ with site.Menus.blogroll }}
+    <section>
+      <h2 class="sidebar-heading">Blogroll</h2>
+      <ul>
+        {{ range . }}
+          <li><a href="{{ .URL }}" rel="noopener noreferrer">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
     {{ with site.Taxonomies.tags }}
     <section>
       <h2 class="sidebar-heading">Tags</h2>
