@@ -4,5 +4,5 @@
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
   </header>
   {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ .Summary }}{{ end }}
-  <a href="{{ .RelPermalink }}" aria-label="Read more about {{ .Title }}" class="read-more">Read more</a>
+  <a href="{{ .RelPermalink }}" aria-label="Permalink to {{ .Title }}" class="read-more">Permalink</a>
 </article>

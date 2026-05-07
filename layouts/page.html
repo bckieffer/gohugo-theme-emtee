@@ -15,6 +15,7 @@
   </ul>
   {{ end }}
 </article>
+{{ if or .PrevInSection .NextInSection }}
 <nav class="post-nav" aria-label="Post navigation">
   {{ with .PrevInSection }}
     <a href="{{ .RelPermalink }}" rel="prev">← {{ .Title }}</a>
@@ -23,4 +24,5 @@
     <a href="{{ .RelPermalink }}" rel="next">{{ .Title }} →</a>
   {{ end }}
 </nav>
+{{ end }}
 {{ end }}
