@@ -24,3 +24,15 @@
 .sidebar-nav li {
   margin-bottom: 0.25rem;
 }
+
+.sidebar-brand {
+  display: block;
+  width: 8.75rem;
+  height: 1.875rem;
+  margin-top: 2.5rem;
+  color: var(--fg);
+}
+
+.sidebar-brand .accent {
+  fill: var(--header-bg);
+}

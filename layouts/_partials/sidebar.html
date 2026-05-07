@@ -25,4 +25,9 @@
     </section>
     {{ end }}
   </nav>
+  {{ if site.Params.showThemeBrand }}
+  <a class="sidebar-brand" href="https://github.com/bckieffer/gohugo-theme-emtee" aria-label="GoHugo theme emtee on GitHub">
+    {{ partial "emteepowered.svg" . }}
+  </a>
+  {{ end }}
 </aside>

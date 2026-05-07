@@ -26,12 +26,20 @@ All params are optional; defaults are shown.
 
 ```toml
 [params]
-description   = ""          # Site-wide meta description (fallback for pages without one)
-mainSections  = ["posts"]   # Sections counted as blog posts
-author        = ""          # Author name — appears in footer and OG meta
-authorBio     = ""          # Short bio — appears in footer
-ogImage       = ""          # Root-relative path to fallback social-card image (1200×630)
-twitterHandle = ""          # e.g. "@example" — omit or leave empty to suppress twitter:site
+description    = ""          # Site-wide meta description (fallback for pages without one)
+mainSections   = ["posts"]   # Sections counted as blog posts
+author         = ""          # Author name — appears in footer and OG meta
+authorBio      = ""          # Short bio — appears in footer
+ogImage        = ""          # Root-relative path to fallback social-card image (1200×630)
+twitterHandle  = ""          # e.g. "@example" — omit or leave empty to suppress twitter:site
+showThemeBrand = true        # Show the "GoH emtee powered" SVG badge in the sidebar
+```
+
+To hide the theme badge, set `showThemeBrand = false` in your site's `[params]`:
+
+```toml
+[params]
+showThemeBrand = false
 ```
 
 Recommended `hugo.toml` additions that the theme expects to be set at the site level:
