@@ -1,6 +1,3 @@
 <footer class="site-footer">
-  {{ with site.Params.author }}
-  <p><strong>{{ . }}</strong>{{ with site.Params.authorBio }} — {{ . }}{{ end }}</p>
-  {{ end }}
   <p>&copy; {{ now.Format "2006" }} {{ site.Params.author }}. All rights reserved.</p>
 </footer>
