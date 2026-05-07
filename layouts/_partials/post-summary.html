@@ -3,6 +3,6 @@
     <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
   </header>
-  <p>{{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
+  {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ .Summary }}{{ end }}
   <a href="{{ .RelPermalink }}" aria-label="Read more about {{ .Title }}" class="read-more">Read more</a>
 </article>

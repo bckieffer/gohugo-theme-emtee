@@ -1,0 +1,75 @@
+@import 'components/layout';
+@import 'components/header';
+@import 'components/footer';
+@import 'components/sidebar';
+@import 'components/post';
+@import 'components/post-summary';
+@import 'components/archive';
+
+:root {
+  --bg:       #ffffff;
+  --fg:       #1a1a1a;
+  --fg-muted: #555555;
+  --link:     #0050ff;
+  --border:   #e5e5e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #1a1a1a;
+    --fg:       #e5e5e5;
+    --fg-muted: #aaaaaa;
+    --link:     #6699ff;
+    --border:   #333333;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+time {
+  color: var(--fg-muted);
+  font-size: 0.875rem;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  color: var(--link);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skip-link {
+    transition: top 0.1s;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

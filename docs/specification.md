@@ -56,13 +56,14 @@ themes/emtee/
 |   +-- lint-slugs.sh           # Enforces the post filename slug convention
 +-- assets/
 |   +-- css/
-|       +-- main.css            # Stylesheet entry point (processed by Hugo Pipes)
+|       +-- main.scss           # Stylesheet entry point (processed by Hugo Pipes via css.Sass)
 |       +-- components/
-|           +-- layout.css      # CSS Grid layout
-|           +-- header.css      # Site header styles
-|           +-- footer.css      # Site footer styles
+|           +-- _layout.scss    # CSS Grid layout
+|           +-- _header.scss    # Site header styles
+|           +-- _footer.scss    # Site footer styles
 +-- layouts/
-|   +-- baseof.html             # Base template (wraps every page)
+|   +-- _default/
+|   |   +-- baseof.html         # Base template (wraps every page)
 |   +-- home.html               # Home page template
 |   +-- page.html               # Individual post template
 |   +-- section.html            # Section / archive list template
@@ -434,7 +435,7 @@ Transitions and animations must respect `prefers-reduced-motion: reduce`. Wrap a
 
 All templates live in `themes/emtee/layouts/`. To override any template for a specific site, place the file at the equivalent path under the site root.
 
-### Base Template (`themes/emtee/layouts/baseof.html`)
+### Base Template (`themes/emtee/layouts/_default/baseof.html`)
 
 ```html
 <!DOCTYPE html>
@@ -617,18 +618,15 @@ Used for `/YYYY/`, `/YYYY/MM/`, and any other section listing. When the section'
 <meta name="twitter:site" content="{{ . }}">
 {{- end }}
 
-{{ $css := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet"
-      href="{{ $css.RelPermalink }}"
-      integrity="{{ $css.Data.Integrity }}"
-      crossorigin="anonymous">
+{{ $css := resources.Get "css/main.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
 
 {{ range .AlternativeOutputFormats -}}
   {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 {{ end }}
 ```
 
-`resources.Get "css/main.css"` resolves to `themes/emtee/assets/css/main.css` via Hugo's asset lookup order. The description chain (front-matter `description` → auto `.Summary` → `site.Params.description`) ensures every page has a non-empty description.
+`resources.Get "css/main.scss"` resolves to `themes/emtee/assets/css/main.scss` via Hugo's asset lookup order. `css.Sass` is provided by Hugo extended (embedded Dart Sass — no external tooling required) and resolves all `@import` statements at build time. The description chain (front-matter `description` → auto `.Summary` → `site.Params.description`) ensures every page has a non-empty description.
 
 ### Header Partial (`themes/emtee/layouts/_partials/header.html`)
 
@@ -726,28 +724,35 @@ Hugo's built-in RSS output is used as-is. Feed item content is full post bodies 
 
 ## Styling
 
-The stylesheet entry point is `themes/emtee/assets/css/main.css`, which imports component files and declares base rules. There is no preprocessor — plain CSS with custom properties is intentionally sufficient.
+The stylesheet entry point is `themes/emtee/assets/css/main.scss`. It uses SCSS `@import` to pull in component partials, then declares base rules (custom properties, dark mode, body, typography, skip link, focus styles). Component files use only plain CSS — no Sass-specific syntax. SCSS is used solely for its `@import` resolution at build time.
+
+Hugo extended includes embedded Dart Sass, so no external tooling is required.
 
 ### File Structure
 
 ```
 assets/css/
-+-- main.css            # Entry point; imports components, declares base rules
++-- main.scss              # Entry point: @imports components, declares base rules
 +-- components/
-    +-- layout.css      # CSS Grid container and column rules
-    +-- header.css      # .site-header, .site-title
-    +-- footer.css      # .site-footer, .bio, .copyright
+    +-- _layout.scss       # CSS Grid container and column rules
+    +-- _header.scss       # .site-header, .site-title
+    +-- _footer.scss       # .site-footer
+    +-- _sidebar.scss      # .sidebar, .sidebar-nav, .sidebar-heading
+    +-- _post.scss         # .post, .post-content, .post-nav, .tags
+    +-- _post-summary.scss # .post-summary, .read-more, .post-list
+    +-- _archive.scss      # .archive, .archive-month, .pagination, .taxonomy-list
 ```
 
-Additional component files are added as features are built (sidebar, post, post-summary, archive, pagination).
+Underscore-prefixed files are SCSS partials — they are not compiled independently, only via `@import` from `main.scss`.
 
 ### Asset Pipeline
 
 The stylesheet flows through Hugo Pipes in `_partials/head.html`:
 
-1. **`resources.Get "css/main.css"`** — pulls from `themes/emtee/assets/css/`.
-2. **`resources.Minify`** — strips whitespace and comments for production.
-3. **`resources.Fingerprint`** — appends a content hash to the filename for cache-busting and SRI.
+1. **`resources.Get "css/main.scss"`** — pulls from `themes/emtee/assets/css/`.
+2. **`css.Sass`** — compiles SCSS and resolves all `@import` statements into a single file.
+3. **`resources.Minify`** — strips whitespace and comments for production.
+4. **`resources.Fingerprint`** — appends a content hash to the filename for cache-busting and SRI.
 
 ### Color Tokens & Dark Mode
 

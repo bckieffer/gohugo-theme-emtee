@@ -1,0 +1,28 @@
+.sidebar {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.sidebar-heading {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fg-muted);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.sidebar-nav section:first-child .sidebar-heading {
+  margin-top: 0;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.25rem;
+}

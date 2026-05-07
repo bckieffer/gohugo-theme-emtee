@@ -1,0 +1,65 @@
+.archive > h1 {
+  margin-bottom: 1.5rem;
+}
+
+.archive-month {
+  margin-bottom: 1.5rem;
+}
+
+.archive-month h2 {
+  font-size: 1rem;
+  color: var(--fg-muted);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.archive-month ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.archive-month li {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.archive-month time {
+  flex-shrink: 0;
+  min-width: 4rem;
+}
+
+.taxonomy-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.taxonomy-list li a {
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+}
+
+.taxonomy-list li a:hover {
+  border-color: var(--link);
+  text-decoration: none;
+}
+
+.post-count {
+  color: var(--fg-muted);
+  font-size: 0.875rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}

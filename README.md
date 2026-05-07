@@ -148,7 +148,7 @@ Two-column desktop (two `400px` columns, `12px` gutter, `812px` total), single-c
 
 ## Styling
 
-Single stylesheet at `assets/css/main.css`, processed through Hugo Pipes (`Minify` + `Fingerprint`). Plain CSS with custom properties — no preprocessor, no build step.
+Stylesheet entry point at `assets/css/main.scss`, processed through Hugo Pipes (`css.Sass` → `Minify` → `Fingerprint`). Component files use plain CSS — SCSS is used only for `@import` resolution at build time. Hugo extended includes embedded Dart Sass; no external tooling required.
 
 Color tokens:
 

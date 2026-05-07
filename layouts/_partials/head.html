@@ -24,7 +24,7 @@
 {{ with $ogImage }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
 {{ with site.Params.twitterHandle }}<meta name="twitter:site" content="{{ . }}">{{ end }}
 
-{{ $css := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
+{{ $css := resources.Get "css/main.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 
 {{ range .AlternativeOutputFormats }}
