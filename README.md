@@ -6,7 +6,7 @@ A minimal Hugo theme for personal blogs. Single-author, semantic HTML, WCAG 2.1 
 
 ## Requirements
 
-Hugo **≥ 0.146.0** — required for `layouts/_partials/` resolution.
+Hugo **≥ 0.161.0** — required for `layouts/_partials/` resolution and `site.Language.Locale`.
 
 ---
 
