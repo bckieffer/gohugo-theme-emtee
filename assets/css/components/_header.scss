@@ -1,5 +1,5 @@
 .site-header {
-  background-color: #006699;
+  background-color: var(--header-bg);
   border-bottom: 6px solid var(--border);
   padding: 0.5rem 1rem;
   margin-bottom: 1.5rem;
@@ -8,7 +8,7 @@
 .site-title {
   font-size: 1.75rem;
   font-weight: bold;
-  color: var(--fg);
+  color: var(--header-fg);
 }
 
 .site-title:hover {

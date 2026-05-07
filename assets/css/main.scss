@@ -7,22 +7,26 @@
 @import 'components/archive';
 
 :root {
+  --header-bg:     #006699;
   --page-bg:       #e8e8e8;
   --bg:            #fafafa;
-  --fg:            #1a1a1a;
+  --fg:            #1b1b1b;
   --fg-muted:      #555555;
-  --link:          #0050ff;
+  --header-fg:     #eaeaea;
+  --link:          #1249be;
   --border:        #e5e5e5;
   --border-strong: #555555;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --header-bg:     #006699;
     --page-bg:       #111111;
     --bg:            #1a1a1a;
     --fg:            #e5e5e5;
     --fg-muted:      #8d8d8d;
-    --link:          #6699ff;
+    --header-fg:     #eaeaea;
+    --link:          #6b99f5;
     --border:        #333333;
     --border-strong: #161616;
   }
