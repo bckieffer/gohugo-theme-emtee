@@ -1,8 +1,11 @@
 <article class="post-summary">
   <header>
     <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
   </header>
   {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ .Summary }}{{ end }}
-  <a href="{{ .RelPermalink }}" aria-label="Permalink to {{ .Title }}" class="read-more">Permalink</a>
+  <div class="post-metadata">
+    <a href="{{ .RelPermalink }}" aria-label="Permalink to {{ .Title }}" class="read-more">Permalink</a>
+    |
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+  </div>
 </article>

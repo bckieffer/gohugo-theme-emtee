@@ -7,27 +7,36 @@
 @import 'components/archive';
 
 :root {
-  --bg:       #ffffff;
-  --fg:       #1a1a1a;
-  --fg-muted: #555555;
-  --link:     #0050ff;
-  --border:   #e5e5e5;
+  --page-bg:       #e8e8e8;
+  --bg:            #fafafa;
+  --fg:            #1a1a1a;
+  --fg-muted:      #555555;
+  --link:          #0050ff;
+  --border:        #e5e5e5;
+  --border-strong: #555555;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:       #1a1a1a;
-    --fg:       #e5e5e5;
-    --fg-muted: #aaaaaa;
-    --link:     #6699ff;
-    --border:   #333333;
+    --page-bg:       #111111;
+    --bg:            #1a1a1a;
+    --fg:            #e5e5e5;
+    --fg-muted:      #8d8d8d;
+    --link:          #6699ff;
+    --border:        #333333;
+    --border-strong: #161616;
   }
+}
+
+html {
+  background: var(--page-bg);
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: sans-serif;
+  font-family: 'Trebuchet MS', Verdana, sans-serif;
+  font-size: 0.8125rem;
   line-height: 1.5;
 }
 

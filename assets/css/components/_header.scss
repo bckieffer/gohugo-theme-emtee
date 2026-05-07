@@ -1,11 +1,12 @@
 .site-header {
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 0;
+  background-color: #006699;
+  border-bottom: 6px solid var(--border);
+  padding: 0.5rem 1rem;
   margin-bottom: 1.5rem;
 }
 
 .site-title {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: bold;
   color: var(--fg);
 }

@@ -6,6 +6,8 @@
 
 .post-summary:last-of-type {
   border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .post-summary header {
@@ -13,7 +15,7 @@
 }
 
 .post-summary h2 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   margin: 0 0 0.25rem;
 }
 
@@ -27,8 +29,24 @@
 }
 
 .post-summary p {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+.post-summary .post-metadata {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
   color: var(--fg-muted);
-  margin: 0.5rem 0;
+}
+
+.post-summary .post-metadata a {
+  font-size: 0.75rem;
+}
+
+.post-summary .post-metadata time {
+  font-size: 0.75rem;
 }
 
 .read-more {
