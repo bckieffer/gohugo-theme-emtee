@@ -1,6 +1,13 @@
 <article class="post-summary">
   <header>
+    {{ if .Params.subtitle }}
+    <hgroup>
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <p class="post-subtitle">{{ .Params.subtitle }}</p>
+    </hgroup>
+    {{ else }}
     <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{ end }}
   </header>
   {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ .Summary }}{{ end }}
   {{ if .Truncated }}<a class="read-more" href="{{ .RelPermalink }}" aria-label="Read more about {{ .Title }}">Read more</a>{{ end }}

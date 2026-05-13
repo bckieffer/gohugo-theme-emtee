@@ -1,7 +1,14 @@
 {{ define "main" }}
 <article class="post">
   <header>
+    {{ if .Params.subtitle }}
+    <hgroup>
+      <h1>{{ .Title }}</h1>
+      <p class="post-subtitle">{{ .Params.subtitle }}</p>
+    </hgroup>
+    {{ else }}
     <h1>{{ .Title }}</h1>
+    {{ end }}
   </header>
   <div class="post-content">
     {{ .Content }}
